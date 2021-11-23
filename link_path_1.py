@@ -52,13 +52,13 @@ if __name__ == "__main__":
     md.max_gap = 0.05
     status = md.optimize(max_seconds=300)
     if status == OptimizationStatus.OPTIMAL:
-        print('optimal solution cost {} found'.format(md.objective_value))
+        print('\noptimal solution cost {} found'.format(md.objective_value))
     elif status == OptimizationStatus.FEASIBLE:
-        print('sol.cost {} found, best possible: {}'.format(md.objective_value, md.objective_bound))
+        print('\nsol.cost {} found, best possible: {}'.format(md.objective_value, md.objective_bound))
     elif status == OptimizationStatus.NO_SOLUTION_FOUND:
-        print('no feasible solution found, lower bound is: {}'.format(md.objective_bound))
+        print('\nno feasible solution found, lower bound is: {}'.format(md.objective_bound))
     if status == OptimizationStatus.OPTIMAL or status == OptimizationStatus.FEASIBLE:
-        print('solution:')
+        print('\nsolution:')
         for v in md.vars:
             if abs(v.x) > 1e-6 and v.name != r.name:  # only printing non-zeros
                 src, dst, path_no = x2src_dst[v.name]
